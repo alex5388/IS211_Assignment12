@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+
+
+<body>
+        <div class="container" align="center">
+        <table width="400px" border="1">
+            <tr>
+                <td width="200px" align="center"><b>Student #</b></td>
+                <td width="200px" align="center"><b>First Name</b></td>
+                <td width="200px" align="center"><b>Last Name</b></td>
+            </tr>
+            {% for info in student %}
+            <tr>
+                <td width="200px" align="center">{{info[0]}}</td>
+                <td width="200px" align="center">{{info[1]}}</td>
+                <td width="200px" align="center">{{info[2]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h1> Add Student</h1>
+        <form action="/student_add" method="post">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" required><br>
+            <input type="submit" value="Add Student">
+        </form>
+        <form action="/student_delete" method="post">
+            <input type="submit" value="Delete Last Row">
+        </form>
+        <br>
+        <br>
+        <br>
+        <table width="500px" border="1">
+            <tr>
+                <td width="200px" align="center"><b>Quiz #</b></td>
+                <td width="200px" align="center"><b>Subject</b></td>
+                <td width="200px" align="center"><b>Questions</b></td>
+                <td width="200px" align="center"><b>Test Date</b></td>
+            </tr>
+            {% for x in quiz %}
+            <tr>
+                <td width="200px" align="center">{{x[0]}}</td>
+                <td width="200px" align="center">{{x[1]}}</td>
+                <td width="200px" align="center">{{x[2]}}</td>
+                <td width="200px" align="center">{{x[3]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h1> Add Quiz</h1>
+        <form action="/quiz_add" method="post">
+            <label for="quizid">Quiz ID</label><br>
+            <input type="number" id="quizid" name="quizid" required><br>
+            <label for="subject">Subject</label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="questions">Questions</label><br>
+            <input type="text" id="questions" name="questions" required><br>
+            <label for="date">Date</label><br>
+            <input type="date" id="date" name="date" required><br>
+            <input type="submit" value="Add Quiz">
+        </form>
+        <form action="/quiz_delete" method="post">
+            <input type="submit" value="Delete Last Row">
+        </form>
+        <br>
+        <br>
+        <table width="400px" border="1">
+            <tr>
+                <td width="200px" align="center"><b>Student ID</b></td>
+                <td width="200px" align="center"><b>Quiz ID</b></td>
+                <td width="200px" align="center"><b>Score</b></td>
+            </tr>
+            {% for score in grades%}
+            <tr>
+                <td width="200px" align="center"><b>{{score[0]}}</b></td>
+                <td width="200px" align="center"><b>{{score[1]}}</b></td>
+                <td width="200px" align="center"><b>{{score[2]}}</b></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h1>Add Test Results</h1>
+        <form action="/result_add" method="post">
+            <label for="student#">Student ID</label><br>
+            <input type="number" id="student#" name="student#" required><br>
+            <label for="quiz#">Quiz ID</label><br>
+            <input type="number" id="quiz#" name="quiz#" required><br>
+            <label for="score">Score</label><br>
+            <input type="number" id="score" name="score" required><br>
+            <input type="submit" value="Add Score">
+        </form>
+        <form action="/grade_delete" method="post">
+            <input type="submit" value="Delete Last Row">
+        </form>
+        </div>
+</body>
+</html>
